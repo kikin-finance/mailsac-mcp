@@ -159,9 +159,8 @@ out/
 test-results/
 coverage/
 
-# Lock files (include only one)
-# yarn.lock
-# package-lock.json
+# Lock files (commit package-lock.json, exclude yarn.lock if not used)
+yarn.lock
 
 # Local configuration files
 .env.local
