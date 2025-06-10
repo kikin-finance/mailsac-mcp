@@ -10,6 +10,12 @@ A comprehensive Model Context Protocol (MCP) server that provides access to all 
 
 ## Installation
 
+### Option 1: Install from npm (Recommended)
+```bash
+npm install -g @kikin/mailsac-mcp
+```
+
+### Option 2: Clone and build from source
 1. Clone this repository:
 ```bash
 git clone <repository-url>
@@ -21,63 +27,35 @@ cd mailsac-mcp
 npm install
 ```
 
-3. Set your Mailsac API key as an environment variable:
-```bash
-export MAILSAC_KEY=your_api_key_here
-```
-
-4. Compile TypeScript:
+3. Compile TypeScript:
 ```bash
 npx tsc
 ```
 
+## Usage with Claude Code
+
+Add this MCP server to Claude Code:
+
+```bash
+claude mcp add mailsac -s user npx @kikin/mailsac-mcp --env MAILSAC_KEY=your_api_key_here
+```
+
 ## Usage with Claude Desktop
 
-Add this MCP server to your Claude Desktop configuration:
+Add this MCP server to your Claude Desktop configuration file:
 
-### macOS
-Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
+**Configuration file locations:**
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
+**Configuration:**
 ```json
 {
   "mcpServers": {
     "mailsac": {
-      "command": "node",
-      "args": ["/path/to/mailsac-mcp/index.js"],
-      "env": {
-        "MAILSAC_KEY": "your_api_key_here"
-      }
-    }
-  }
-}
-```
-
-### Windows
-Edit `%APPDATA%/Claude/claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "mailsac": {
-      "command": "node",
-      "args": ["C:\\path\\to\\mailsac-mcp\\index.js"],
-      "env": {
-        "MAILSAC_KEY": "your_api_key_here"
-      }
-    }
-  }
-}
-```
-
-### Linux
-Edit `~/.config/Claude/claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "mailsac": {
-      "command": "node",
-      "args": ["/path/to/mailsac-mcp/index.js"],
+      "command": "npx",
+      "args": ["@kikin/mailsac-mcp"],
       "env": {
         "MAILSAC_KEY": "your_api_key_here"
       }
@@ -91,7 +69,7 @@ Edit `~/.config/Claude/claude_desktop_config.json`:
 You can also use this server with any other MCP-compatible client by running:
 
 ```bash
-MAILSAC_KEY=your_api_key_here node index.js
+MAILSAC_KEY=your_api_key_here npx @kikin/mailsac-mcp
 ```
 
 ## Example Usage
