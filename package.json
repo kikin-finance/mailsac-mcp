@@ -1,21 +1,48 @@
 {
-  "name": "mailsac-mcp",
+  "name": "@kikin/mailsac-mcp",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "MCP server for Mailsac email testing service",
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "mailsac-mcp": "./build/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "clean": "rm -rf build",
+    "prepare": "npm run build",
+    "dev": "npx fastmcp inspect src/index.ts",
+    "start": "node build/index.js"
+  },
+  "files": [
+    "build/**/*",
+    "README.md",
+    "package.json"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mailsac",
+    "email-testing",
+    "claude",
+    "ai"
+  ],
+  "author": "Antony Woods",
   "license": "MIT",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kikin-finance/mailsac-mcp.git"
+  },
+  "homepage": "https://github.com/kikin-finance/mailsac-mcp#readme",
   "dependencies": {
-    "@mailsac/api": "^1.0.8",
-    "fastmcp": "^3.0.0",
-    "zod": "^3.25.56"
+    "fastmcp": "^1.0.0",
+    "zod": "^3.22.0"
   },
   "devDependencies": {
-    "@types/node": "^22.15.30",
-    "typescript": "^5.8.3"
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
